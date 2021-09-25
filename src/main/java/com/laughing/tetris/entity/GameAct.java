@@ -50,16 +50,16 @@ public class GameAct {
 	 */
 	public boolean move(int moveX, int moveY, boolean[][] gameMap) {
 		// 移动处理
-		for (int i = 0; i < actPoints.length; i++) {
-			int newX = actPoints[i].x + moveX;
-			int newY = actPoints[i].y + moveY;
+		for (Point actPoint : actPoints) {
+			int newX = actPoint.x + moveX;
+			int newY = actPoint.y + moveY;
 			if (this.isOverZone(newX, newY, gameMap)) {
 				return false;
 			}
 		}
-		for (int i = 0; i < actPoints.length; i++) {
-			actPoints[i].x += moveX;
-			actPoints[i].y += moveY;
+		for (Point actPoint : actPoints) {
+			actPoint.x += moveX;
+			actPoint.y += moveY;
 		}
 		
 		return true;
@@ -93,9 +93,9 @@ public class GameAct {
 	
 	/**
 	 * 判断是否超出边界
-	 * @param x
-	 * @param y
-	 * @return
+	 * @param x 遊戲區域 x 坐標
+	 * @param y 遊戲區域 y 坐標
+	 * @return 是否出界
 	 */
 	private boolean isOverZone(int x, int y, boolean[][] gameMap) {
 		return x < MIN_X || x > MAX_X || y < MIN_Y || y > MAX_Y || gameMap[x][y];
