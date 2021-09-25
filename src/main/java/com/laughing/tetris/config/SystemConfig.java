@@ -33,10 +33,10 @@ public class SystemConfig implements Serializable {
 		this.minY = Integer.parseInt(system.attributeValue("minY"));
 		this.maxY = Integer.parseInt(system.attributeValue("maxY"));
 		this.levelUp = Integer.parseInt(system.attributeValue("levelUp"));
-		List<Element> rects = system.elements("rect");
-		typeConfig = new ArrayList<>(rects.size());
-		typeRound = new ArrayList<>(rects.size());
-		for (Element rect : rects) {
+		List<Element> rectList = system.elements("rect");
+		typeConfig = new ArrayList<>(rectList.size());
+		typeRound = new ArrayList<>(rectList.size());
+		for (Element rect : rectList) {
 			// 是否旋转
 			this.typeRound.add(Boolean.parseBoolean(rect.attributeValue("round")));
 			// 获得坐标对象
